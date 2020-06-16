@@ -13,7 +13,9 @@
     "@types/pg": "^7.14.3",
     "@types/react": "^16.9.36",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
     "antd": "^4.3.4",
+    "axios": "^0.19.2",
     "class-validator": "^0.12.2",
     "express": "^4.17.1",
     "pg": "^8.2.1",
@@ -28,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch-server": "ts-node-dev --no-notify --project ./server.tsconfig.json src/server/index.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,5 +47,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "proxy": "http://localhost:80",
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.49"
   }
 }

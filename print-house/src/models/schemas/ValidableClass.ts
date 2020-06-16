@@ -1,7 +1,7 @@
 import { validate as validateAsync } from "class-validator";
 
 /**
- * Fields are null, until we call the asynchronous validate
+ * Fields are null, until we call and await the asynchronous validate
  */
 export default class ValidableClass<T>{
     constructor(entity: T) {
@@ -13,6 +13,7 @@ export default class ValidableClass<T>{
             if (validationResult.length) {
                 throw new Error(validationResult.join())
             }
+            
         }
         
         this.validate = validate
