@@ -31,7 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch-server": "ts-node-dev --no-notify --project ./server.tsconfig.json src/server/index.ts"
+    "watch-server": "ts-node-dev --no-notify --project ./server.tsconfig.json src/server/index.ts",
+    "start-main": "ts-node --project ./server.tsconfig.json src/server//index.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,5 +52,8 @@
   "proxy": "http://localhost:80",
   "devDependencies": {
     "ts-node-dev": "^1.0.0-pre.49"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

@@ -12,7 +12,8 @@ export interface IClientsSummaryProps {
 export interface IClientsSummaryState {
     fromTime:number,
     toTime:number,
-    summary:Array<ISum & Omit<IClientModel,"clientAddress">> | null
+    summary:Array<ISum & Omit<IClientModel,"clientAddress">> | null,
+    isLoading:boolean
 }
 
 const {RangePicker} = DatePicker
@@ -27,13 +28,15 @@ export default class ClientsSummary extends React.Component<IClientsSummaryProps
     this.state = {
         fromTime:DEFAULT_START_DATE.getTime(),
         toTime:DEFAULT_END_DATE.getTime(),
-        summary:null
+        summary:null,
+        isLoading:true
     }
   }
   fetchSummary = async() =>{
       const {fromTime,toTime,summary} = this.state
       Axios.get<typeof summary>("/clients/summary",{params:{fromTime,toTime}})
       .then(r => this.setState({summary:r.data}))
+      .finally(()=>this.setState({isLoading:false}))
   }
   componentDidUpdate = (prevProps:IProductsProps,prevState:IClientsSummaryState) =>{
     if(prevState.fromTime !== this.state.fromTime || prevState.toTime !== this.state.toTime){
@@ -50,9 +53,9 @@ columns:ColumnsType<ISum & Omit<IClientModel,"clientAddress">> = [
     {key:"clientId",dataIndex:"clientId",title:"Client Id",render:(id:string)=><Typography>{id}</Typography>}
 ]
   public render() {
-      const {summary} = this.state
+      const {summary,isLoading} = this.state
     return (
-      <div>
+      <React.Fragment>
         <RangePicker onCalendarChange={(dates)=>{
             const updatedState:Partial<IClientsSummaryState> = {}
             if(dates?.[0]){
@@ -63,8 +66,8 @@ columns:ColumnsType<ISum & Omit<IClientModel,"clientAddress">> = [
             }
             this.setState(updatedState as never)
         }}/>
-        <Table columns={this.columns} dataSource={summary!}/>
-      </div>
+        <Table loading={isLoading} columns={this.columns} dataSource={summary!}/>
+      </React.Fragment>
     );
   }
 }
