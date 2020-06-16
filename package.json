@@ -23,12 +23,13 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "ts-node": "^8.10.2",
     "typescript": "^3.7.5",
     "utility-types": "^3.10.0"
   },
   "scripts": {
     "start": "ts-node --project ./server.tsconfig.json src/server/index.ts",
-    "watch-web":"react-scripts start",
+    "watch-web": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -52,7 +53,6 @@
   },
   "proxy": "http://localhost:80",
   "devDependencies": {
-    "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.49"
   },
   "engines": {
