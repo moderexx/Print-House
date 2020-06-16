@@ -41,4 +41,4 @@ app.get("*", (req, res) => {
 });
 
 
-app.listen(80,()=>console.log("listening on 80"))
+app.listen(process.env["PORT"] || 80,()=>console.log("listening on 80"))
