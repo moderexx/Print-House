@@ -1,11 +1,11 @@
 
 CREATE TABLE IF NOT EXISTS factories(
     "factoryId" BIGSERIAL PRIMARY KEY NOT NULL,
-    "factoryName" VARCHAR(50)
+    "factoryName" VARCHAR(100)
 );
 CREATE TABLE IF NOT EXISTS products(
     "productCode" BIGSERIAL PRIMARY KEY NOT NULL,
-    "productName" VARCHAR(30) NOT NULL,
+    "productName" VARCHAR(100) NOT NULL,
     "productPrice" DECIMAL NOT NULL,
     "factoryId" BIGINT REFERENCES factories("factoryId") NOT NULL
 );

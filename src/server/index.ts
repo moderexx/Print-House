@@ -5,23 +5,26 @@ import productRouter from "./routes/productsRouter";
 import clientsRouter from "./routes/clientsRouter";
 import path from 'path'
 import getProducts from "./functions/getProducts";
-import { readFileSync } from "fs";
+import { readFileSync, readFile } from "fs";
 
 pgClient.connect().then(async ()=>{
     // Frist creating the tables if they do not exist
     const query = readFileSync(path.resolve(__dirname,"../data/tables.sql")).toString()
-    await pgClient.query(query)
+    await pgClient.query(query).catch(error => console.error(`Error at creating tables ${error}`))
     
     
     const products = await getProducts()
     if(!products.length){
         // populating the database for testing purposes
         // only populating where there are no product records
-        const query = readFileSync(path.resolve(__dirname,"../data/testpopulate.sql")).toString()
+        readFile(path.resolve(__dirname,"../data/testpopulate.sql"),async (error,data)=>{
+            
+            await pgClient.query(data.toString("utf8")).catch(error => console.error(`Error while populating the database ${error}`))
+        })
 
         console.log("populating database")
         
-        await pgClient.query(query)
+        
     }
    
 
