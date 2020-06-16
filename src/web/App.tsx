@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Products from "./components/Products";
 import ClientsSummary from "./components/ClientsSummary";
 import Home from "./components/Home";
+
 const history = createBrowserHistory()
 
 function App() {

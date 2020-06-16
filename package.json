@@ -27,12 +27,13 @@
     "utility-types": "^3.10.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "ts-node --project ./server.tsconfig.json src/server/index.ts",
+    "watch-web":"react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch-server": "ts-node-dev --no-notify --project ./server.tsconfig.json src/server/index.ts",
-    "start-main": "ts-node --project ./server.tsconfig.json src/server//index.ts"
+    "start-main": "ts-node --project ./server.tsconfig.json src/server/index.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +52,7 @@
   },
   "proxy": "http://localhost:80",
   "devDependencies": {
+    "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.49"
   },
   "engines": {

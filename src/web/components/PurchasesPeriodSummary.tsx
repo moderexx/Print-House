@@ -32,7 +32,7 @@ fetchSummary = async ()=>{
     fromTime: fromTime,toTime: toTime
   }
 
-  const result = await Axios.get<typeof summary>("/purchases/summary",{params})
+  const result = await Axios.get<typeof summary>("/api/purchases/summary",{params})
   this.setState({summary:result.data})
 }
 componentDidUpdate = (prevProps:IPurchasesPeriodSummaryProps,prevState:IPurchasesPeriodSummaryState) =>{

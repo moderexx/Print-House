@@ -34,7 +34,7 @@ export default class ClientsSummary extends React.Component<IClientsSummaryProps
   }
   fetchSummary = async() =>{
       const {fromTime,toTime,summary} = this.state
-      Axios.get<typeof summary>("/clients/summary",{params:{fromTime,toTime}})
+      Axios.get<typeof summary>("/api/clients/summary",{params:{fromTime,toTime}})
       .then(r => this.setState({summary:r.data}))
       .finally(()=>this.setState({isLoading:false}))
   }

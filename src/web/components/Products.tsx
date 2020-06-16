@@ -4,7 +4,6 @@ import IFactoryModel from "../../models/interfaces/IFactoryModel";
 import Table, { ColumnsType } from "antd/lib/table";
 import { Typography } from "antd";
 import Axios from "axios";
-import Title from "antd/lib/typography/Title";
 
 export interface IProductsProps {
 }
@@ -29,7 +28,7 @@ export default class Products extends React.Component<IProductsProps, IProductsS
     this.fetchProducts()
   }
   fetchProducts =  ()=>{
-    Axios.get<Array<IProductModel & IFactoryModel>>("/products")
+    Axios.get<Array<IProductModel & IFactoryModel>>("/api/products")
     .then(r => this.setState({products:r.data}))
     .finally(()=>this.setState({isLoading:false}))
   }

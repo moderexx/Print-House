@@ -12,7 +12,7 @@ router.get("/summary", (req,res)=>{
         // when a number is in a query, I guess its getting parsed to string
         query[key as never] = parseInt(query[key as never]) as never
     }
-    console.log(query)
+    
     const validating = new GetBetweenDatesRequestModel(query)
     validating.validate()
     .then(()=>{
