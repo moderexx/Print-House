@@ -8,6 +8,11 @@ import getProducts from "./functions/getProducts";
 import { readFileSync } from "fs";
 
 pgClient.connect().then(async ()=>{
+    // Frist creating the tables if they do not exist
+    const query = readFileSync(path.resolve(__dirname,"../data/tables.sql")).toString()
+    await pgClient.query(query)
+    
+    
     const products = await getProducts()
     if(!products.length){
         // populating the database for testing purposes
