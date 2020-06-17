@@ -1,3 +1,8 @@
+University assignment.
+This was made in 2 days.
+
+[online heroku demo (might need to wait before the server awakes)](https://print-house-postgresql.herokuapp.com/)
+
 Задание по СУБД
 Копирано от https://unicloud.utp.bg/
 
